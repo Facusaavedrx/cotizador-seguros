@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import styled from '@emotion/styled'
 
 const Campo = styled.fieldset`
@@ -38,11 +39,28 @@ const Boton = styled.button`
   }
 `
 function Formulario () {
+  const [datos, guardarDatos] = useState({
+    marca: '',
+    year: '',
+    plan: ''
+  })
+  const { marca, year, plan } = datos
+  const obtenerInformacion = e => {
+    guardarDatos({
+      ...datos,
+      [e.target.name]: e.target.value
+    })
+  }
+
   return (
     <form>
       <Campo>
         <Label>Marca:</Label>
-        <Select>
+        <Select
+          name='marca'
+          value={marca}
+          onChange={obtenerInformacion}
+        >
           <option value=''>Seleccione una marca</option>
           <option value='americano'>Americano</option>
           <option value='europeo'>Europeo</option>
@@ -52,7 +70,11 @@ function Formulario () {
 
       <Campo>
         <Label>Año:</Label>
-        <Select>
+        <Select
+          name='year'
+          value={year}
+          onChange={obtenerInformacion}
+        >
           <option value=''>Seleccione un año</option>
           <option value='2021'>2021</option>
           <option value='2020'>2020</option>
@@ -72,14 +94,16 @@ function Formulario () {
           type='radio'
           name='plan'
           value='basico'
-        />
-        Basico
+          checked={plan === 'basico'}
+          onChange={obtenerInformacion}
+        /> Basico
         <InputRadio
           type='radio'
           name='plan'
           value='completo'
-        />
-        Completo
+          checked={plan === 'completo'}
+          onChange={obtenerInformacion}
+        /> Completo
       </Campo>
       <Boton type='button'> Cotizar </Boton>
     </form>
