@@ -14,7 +14,7 @@ function App () {
   return (
     <Contenedor>
       <Header
-        titulo='Hola mundo'
+        titulo='Cotizador de seguros'
       />
       <ContenedorFormulario>
         <Formulario />

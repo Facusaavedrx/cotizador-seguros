@@ -20,6 +20,23 @@ const Select = styled.select`
 const InputRadio = styled.input`
   margin: 0 1rem;
 `
+const Boton = styled.button`
+  background-color: #00838F;
+  font-size: 16px;
+  width: 100%;
+  padding: 1rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  margin-top: 2rem;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #26C6DA;
+    transition: background-color .3s ease;
+  }
+`
 function Formulario () {
   return (
     <form>
@@ -36,7 +53,7 @@ function Formulario () {
       <Campo>
         <Label>Año:</Label>
         <Select>
-          <option value=''>-- Seleccione --</option>
+          <option value=''>Seleccione un año</option>
           <option value='2021'>2021</option>
           <option value='2020'>2020</option>
           <option value='2019'>2019</option>
@@ -64,11 +81,7 @@ function Formulario () {
         />
         Completo
       </Campo>
-      <button
-        type='button'
-      >
-        Cotizar
-      </button>
+      <Boton type='button'> Cotizar </Boton>
     </form>
   )
 }
