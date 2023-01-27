@@ -1,19 +1,41 @@
+import styled from '@emotion/styled'
+
+const Campo = styled.fieldset`
+  display: flex;
+  margin-top: 1rem;
+  margin-buttom: 1rem;
+  align-items: center;
+  border: none;
+`
+const Label = styled.legend`
+  flex: 0 0 100px;
+`
+const Select = styled.select`
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #e1e1e1;
+  -webkit-appearence: none;
+`
+const InputRadio = styled.input`
+  margin: 0 1rem;
+`
 function Formulario () {
   return (
     <form>
-      <fieldset>
-        <legend>Marca</legend>
-        <select>
+      <Campo>
+        <Label>Marca:</Label>
+        <Select>
           <option value=''>Seleccione una marca</option>
           <option value='americano'>Americano</option>
           <option value='europeo'>Europeo</option>
           <option value='asiatico'>Asiatico</option>
-        </select>
-      </fieldset>
+        </Select>
+      </Campo>
 
-      <fieldset>
-        <legend>Año</legend>
-        <select>
+      <Campo>
+        <Label>Año:</Label>
+        <Select>
           <option value=''>-- Seleccione --</option>
           <option value='2021'>2021</option>
           <option value='2020'>2020</option>
@@ -25,23 +47,23 @@ function Formulario () {
           <option value='2014'>2014</option>
           <option value='2013'>2013</option>
           <option value='2012'>2012</option>
-        </select>
-      </fieldset>
-      <fieldset>
-        <legend>Plan</legend>
-        <input
+        </Select>
+      </Campo>
+      <Campo>
+        <Label>Plan:</Label>
+        <InputRadio
           type='radio'
           name='plan'
           value='basico'
         />
         Basico
-        <input
+        <InputRadio
           type='radio'
           name='plan'
           value='completo'
         />
         Completo
-      </fieldset>
+      </Campo>
       <button
         type='button'
       >
