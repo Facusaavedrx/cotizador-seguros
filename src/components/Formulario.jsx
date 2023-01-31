@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { obtenerDiferenciaYear, calcularMarca, obtenerPlan } from '../helper.js'
 import styled from '@emotion/styled'
 
 const Campo = styled.fieldset`
@@ -66,7 +67,13 @@ function Formulario () {
       return guardarError(true)
     }
     guardarError(false)
-    console.log('Enviado con exito')
+    let resultado = 2000
+    const diferencia = obtenerDiferenciaYear(year)
+    resultado -= ((diferencia * 3) * resultado) / 100
+    resultado = calcularMarca(marca) * resultado
+    const incrementoPlan = obtenerPlan(plan)
+    resultado = parseFloat(incrementoPlan * resultado).toFixed(2) // Incluye centavos
+    console.log(resultado)
   }
 
   return (
@@ -96,6 +103,7 @@ function Formulario () {
           onChange={obtenerInformacion}
         >
           <option value=''>Seleccione un año</option>
+          <option value='2022'>2022</option>
           <option value='2021'>2021</option>
           <option value='2020'>2020</option>
           <option value='2019'>2019</option>
