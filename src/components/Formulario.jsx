@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { obtenerDiferenciaYear, calcularMarca, obtenerPlan } from '../helper.js'
 import styled from '@emotion/styled'
+import PropTypes from 'prop-types'
 
 const Campo = styled.fieldset`
   display: flex;
@@ -74,7 +75,7 @@ function Formulario ({ guardarResumen }) {
     const incrementoPlan = obtenerPlan(plan)
     resultado = parseFloat(incrementoPlan * resultado).toFixed(2) // Incluye centavos
     guardarResumen({
-      cotizacion: resultado,
+      cotizacion: Number(resultado),
       datos
     })
   }
@@ -140,4 +141,9 @@ function Formulario ({ guardarResumen }) {
     </form>
   )
 }
+
+Formulario.propTypes = {
+  guardarResumen: PropTypes.func.isRequired
+}
+
 export default Formulario

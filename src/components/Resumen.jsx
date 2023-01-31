@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { primerMayuscula } from '../helper'
+import PropTypes from 'prop-types'
 
 const ContenedorResumen = styled.section`
   padding: 1rem;
@@ -21,5 +22,9 @@ function Resumen ({ datos }) {
       </ul>
     </ContenedorResumen>
   )
+}
+
+Resumen.propTypes = {
+  datos: PropTypes.object.isRequired
 }
 export default Resumen
